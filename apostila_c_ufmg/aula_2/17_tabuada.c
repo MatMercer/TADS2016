@@ -6,13 +6,13 @@ int main() {
     scanf("%d", &x);
 
     for (i = 1; i <= x; ++i) {
-        printf("# %d #", i);
+        printf("%d \t", i);
     }
 
     printf("\n");
     for(j = 1; j <= x; j++) {   //printa as linhas
         for(i = 1; i <= x; ++i) {   //preenche a tabuada com o numero da linha (j) vezes a posicao (i)
-            printf("| %d |", j * i);
+            printf("%d \t", j * i);
         }
         printf("\n");
     }

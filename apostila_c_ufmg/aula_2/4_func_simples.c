@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int mensagem() {
-    printf("Ola! ");
+    printf("Ola pessoa.");
     return(0);
 }
 

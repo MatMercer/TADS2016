@@ -16,5 +16,6 @@ int main() {
         }
     }
     printf("%s\n", str);
+    printf("%d modificacoes\n", count);
     return(0);
 }

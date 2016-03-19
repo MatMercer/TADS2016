@@ -1,18 +1,29 @@
 #include <stdio.h>
+
+//Constantes usadas no calculo
+#define INSS 0.11;
+#define CONTRIB_SINDICAL 0.01;
+#define IMPOSTO_RENDA 0.27;
+#define MESES_TRABALHADOS 13;
+
 int main() {
 	/**************************************
 		Declaracoes
 	**************************************/
 	//Dados sobre o usuario
 	char nome[32];
-	char sobreNome[32];
+	char sobrenome[32];
 	char cargo[32];
 	char empresa[32];
-	//Constantes usadas no calculo
-	const float inss = (11) / 100; //(D%) / 100
-	const float contrSind = (1) / 100;
-	const float impostoRenda = (27) / 100;
-	//Variaveis usadas no calculo
+	//Variaveis usadas no calculo e resultado
+	short horaMes = 0;
+	int i = 0;
+	float inss;
+	float contrSind;
+	float impostoRenda;
+	float valHora = 0;
+	float salBruto = 0;
+	float salLiquido = 0;
 
 	/*********************
 		Inicio
@@ -29,31 +40,67 @@ int main() {
 	__fpurge(stdin);
 
 	printf("Qual o seu sobrenome? ");
-	scanf("%s", sobreNome);
-	sobreNome[0] = toupper(sobreNome[0]);
+	scanf("%s", sobrenome);
+	sobrenome[0] = toupper(sobrenome[0]);
 	__fpurge(stdin);
-
-	/**************************************
-		Gera uma mensagem de boas vindas
-	***************************************/
-	printf("\nBem vindo %s %s!", nome, sobreNome);
-	printf("\nEsse programa serve para calcular seu salario anual bruto,");
-	printf("\nseu INSS anual, seu IR anual e seu salario anual liquido.\n");
 
 	/**************************************
 		Pede informacoes sobre a carreira
 		do usuario
 	***************************************/
-	printf("\nPara isso, insira seu cargo: ");
+	printf("Insira o seu cargo: ");
 	scanf("%s", cargo);
 	cargo[0] = toupper(cargo[0]);
 	__fpurge(stdin);
 
-	printf("\nO nome da empresa em que voce trabalha: ");
+	printf("O nome da empresa em que voce trabalha: ");
 	scanf("%s", empresa);
 	empresa[0] = toupper(empresa[0]);
 	__fpurge(stdin);
 
+	printf("O seu valor hora: ");
+	scanf("%f", &valHora);
+
+	printf("Quantas horas voce trabalha em um mes: ");
+	scanf("%hd", &horaMes);
+
+	/**************************************
+		Calculos e resultados
+	***************************************/
+
+	salBruto = valHora*horaMes;
+	inss = salBruto * INSS;
+	contrSind = salBruto * CONTRIB_SINDICAL;
+	impostoRenda = salBruto * IMPOSTO_RENDA;
+	salLiquido = salBruto - inss - contrSind - impostoRenda;
+
+	//Limpa o console
+	for (i = 0; i < 50; ++i){
+		printf("\n");
+	}
+
+	printf("\nEMPRESA: %s\n", empresa);
+	printf("\nFUNCIONÁRIO: %s %s\n", nome, sobrenome);
+	printf("\nCARGO: %s\n", cargo);
+	printf("\n\nValores Mensais:\n");
+	printf("\nHoras Trabalhadas: %hd\n", horaMes);
+	printf("\nSalário Mensal Bruto: %.2f\n", salBruto);
+	printf("\nINSS: %.2f\n", inss);
+	printf("\nContribuição Sindical: %.2f\n", contrSind);
+	printf("\nIR: %.2f\n", impostoRenda);
+	printf("\nSalário Mensal Líquido: %.2f\n", salLiquido);
+
+	salBruto *= MESES_TRABALHADOS;
+	inss *= MESES_TRABALHADOS;
+	contrSind *= MESES_TRABALHADOS;
+	impostoRenda *= MESES_TRABALHADOS;
+	salLiquido *= MESES_TRABALHADOS;
+
+	printf("\n\nValores Anuais:\n");
+	printf("\nSalário Anual Bruto: %.2f\n", salBruto);
+	printf("\nINSS: %.2f\n", inss);
+	printf("\nIR: %.2f\n", impostoRenda);
+	printf("\nSalário Anual Líquido: %.2f\n", salLiquido);
 
     return(0);
 }

@@ -4,7 +4,7 @@
 #define INSS 0.11;
 #define CONTRIB_SINDICAL 0.01;
 #define IMPOSTO_RENDA 0.27;
-#define MESES_TRABALHADOS 13;
+#define MESES_RECEBIDOS 13;
 
 int main() {
 	/**************************************
@@ -90,11 +90,11 @@ int main() {
 	printf("\nIR: %.2f\n", impostoRenda);
 	printf("\nSalário Mensal Líquido: %.2f\n", salLiquido);
 
-	salBruto *= MESES_TRABALHADOS;
-	inss *= MESES_TRABALHADOS;
-	contrSind *= MESES_TRABALHADOS;
-	impostoRenda *= MESES_TRABALHADOS;
-	salLiquido *= MESES_TRABALHADOS;
+	salBruto *= MESES_RECEBIDOS;
+	inss *= MESES_RECEBIDOS;
+	contrSind *= MESES_RECEBIDOS;
+	impostoRenda *= MESES_RECEBIDOS;
+	salLiquido *= MESES_RECEBIDOS;
 
 	printf("\n\nValores Anuais:\n");
 	printf("\nSalário Anual Bruto: %.2f\n", salBruto);

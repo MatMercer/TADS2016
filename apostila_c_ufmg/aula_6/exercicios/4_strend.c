@@ -49,7 +49,7 @@ int strend(char *s, char *t) {
 
 int main () {
     int tamanho = 0;
-    char str1[100],str2[1],str3[100];
+    char str1[100],str2[100];
     printf("Entre com uma string: ");
     gets(str1);
     printf("Entre com outra string: ");

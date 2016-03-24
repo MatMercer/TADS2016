@@ -1,11 +1,11 @@
 #include <stdio.h>
 
-float prod(float x, float y) {
-    return(x+y);
+int add(int x, int y) {
+    return(x + y);
 }
 
 int main () {
-    float value = prod(145.7412, 4.412);
-    printf("A soma eh: %f\n", value);
+    int soma = add(17, 25);
+    printf("Soma = %d\n", soma);
     return(0);
 }

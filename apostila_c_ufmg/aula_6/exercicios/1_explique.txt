@@ -1,0 +1,13 @@
+a) Explique a diferença entre
+ p++; (*p)++; *(p++);
+* O que quer dizer *(p+10);?
+* Explique o que você entendeu da comparação entre ponteiros 
+
+___
+p++ significa andar 1 posicao na memoria do ponteiro
+(*p)++ significa adicionar 1 a variavel q o ponteiro esta apontando
+*(p++) eh pegar o valor de uma posicao acima do ponteiro
+__
+*(p+10) quer dizer pegar um valor 10 posicoes acima desse ponteiro
+__
+A comparacao nada mais eh para descobrir se dois ponteiros apontam pro mesmo endereco, ou qual esta apontando para um endereco menor/maior que o outro na memoria.

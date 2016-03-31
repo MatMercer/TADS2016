@@ -44,12 +44,14 @@ int main() {
 //    	printf("\n");
 //    }
 
-	for(i = 0; i < size - 1; i++) {
-		for (j = 0; j < i; j++) {
-			printf(" ");
-		}
-		for (j = i + 1; j <= size - i; j++) {
-			printf("%d", j);
+	for(i = 0; i < size; i++) {
+		for (j = 1; j <= size - i; j++) {
+                        if(j <= i) {
+                            printf(" ");
+                        }
+                        else {
+			    printf("%d", j);
+                        }
 		}
 		printf("\n");
 	}

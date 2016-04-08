@@ -14,6 +14,9 @@
 #define PORC_FAIXA_4 0.225
 #define PORC_FAIXA_5 0.275
 #define MESES_RECEBIDOS 13
+#define MAX_DEPENDENTES 12
+#define DESC_DEP_MENSAL 189.59
+#define DESC_DEP_ANUAL 2275.08
 
 int main() {
     /**************************************
@@ -21,11 +24,12 @@ int main() {
      **************************************/
     //Variaveis usadas no calculo e resultado
     short horaMes = 0;
-    int i = 0;
+    short dependentes = 0;
     float impostoRenda = 0;
     float valHora = 0;
     float salBruto = 0;
     float salLiquido = 0;
+    float desconto = 0;
 
     /*********************
       Inicio
@@ -41,14 +45,20 @@ int main() {
     printf("Quantas horas voce trabalha em um mes: ");
     scanf("%hd", &horaMes);
 
+    printf("Quantos dependentes: \n");
+    scanf("%hd", &dependentes);
+
+    if(dependentes > MAX_DEPENDENTES) {
+        dependentes = MAX_DEPENDENTES;
+    }
+
     /**************************************
       Calculos e resultados
      ***************************************/
 
     //Calculos mensais
-
-    salBruto = horaMes * valHora;
-
+    desconto = dependentes * DESC_DEP_MENSAL;
+    salBruto = horaMes * valHora - desconto;
 
     if(salBruto > FAIXA_MENSAL_2) {
         if(salBruto > FAIXA_MENSAL_3) {
@@ -88,16 +98,18 @@ int main() {
          impostoRenda += (salBruto - FAIXA_MENSAL_5) * PORC_FAIXA_5;
     }
 anual:
-    
+
     salLiquido = salBruto - impostoRenda;
     printf("\n\nValores Mensais:\n");
-    printf("\nSalário Mensal Bruto: %.2f\n", salBruto);
+    printf("\nSalário Mensal Bruto: %.2f\n", horaMes * valHora);
     printf("\nIR: %.2f\n", impostoRenda);
-    printf("\nSalário Mensal Líquido: %.2f\n", salLiquido);
+    printf("\nSalário Mensal Líquido: %.2f\n", horaMes * valHora - impostoRenda);
 
     //Calculos anuais
     impostoRenda = 0;
-    salBruto *= MESES_RECEBIDOS;
+    desconto = dependentes * DESC_DEP_ANUAL;
+    salBruto = horaMes * valHora * MESES_RECEBIDOS;
+    salBruto -= desconto;
     
     if(salBruto > FAIXA_ANUAL_2) {
         if(salBruto > FAIXA_ANUAL_3) {
@@ -142,9 +154,9 @@ fim:
     salLiquido = salBruto - impostoRenda;
 
     printf("\n\nValores Anuais:\n");
-    printf("\nSalário Anual Bruto: %.2f\n", salBruto);
+    printf("\nSalário Anual Bruto: %.2f\n", horaMes * valHora * MESES_RECEBIDOS);
     printf("\nIR: %.2f\n", impostoRenda);
-    printf("\nSalário Anual Líquido: %.2f\n", salLiquido);
+    printf("\nSalário Anual Líquido: %.2f\n", horaMes * valHora * MESES_RECEBIDOS - impostoRenda);
 
     return(0);
 }

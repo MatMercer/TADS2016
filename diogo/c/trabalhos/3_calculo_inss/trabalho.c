@@ -28,6 +28,7 @@ int main() {
     float impostoRenda = 0;
     float valHora = 0;
     float salBruto = 0;
+    float salDescontado = 0;
     float salLiquido = 0;
     float desconto = 0;
 
@@ -58,14 +59,15 @@ int main() {
 
     //Calculos mensais
     desconto = dependentes * DESC_DEP_MENSAL;
-    salBruto = horaMes * valHora - desconto;
+    salBruto = horaMes * valHora;
+    salDescontado = salBruto - desconto;
 
-    if(salBruto > FAIXA_MENSAL_2) {
-        if(salBruto > FAIXA_MENSAL_3) {
+    if(salDescontado > FAIXA_MENSAL_2) {
+        if(salDescontado > FAIXA_MENSAL_3) {
             impostoRenda += (FAIXA_MENSAL_3 - FAIXA_MENSAL_2) * PORC_FAIXA_2;
         }
         else {
-            impostoRenda += (salBruto - FAIXA_MENSAL_2) * PORC_FAIXA_2;
+            impostoRenda += (salDescontado - FAIXA_MENSAL_2) * PORC_FAIXA_2;
             goto anual;
         }
     }
@@ -74,31 +76,31 @@ int main() {
         goto anual;
     }
 
-    if(salBruto > FAIXA_MENSAL_3) {
-        if(salBruto > FAIXA_MENSAL_4) {
+    if(salDescontado > FAIXA_MENSAL_3) {
+        if(salDescontado > FAIXA_MENSAL_4) {
             impostoRenda += (FAIXA_MENSAL_4 - FAIXA_MENSAL_3) * PORC_FAIXA_3;
         }
         else {
-            impostoRenda += (salBruto - FAIXA_MENSAL_3) * PORC_FAIXA_3;
+            impostoRenda += (salDescontado - FAIXA_MENSAL_3) * PORC_FAIXA_3;
             goto anual;
         }
     }
 
-    if(salBruto > FAIXA_MENSAL_4) {
-        if(salBruto > FAIXA_MENSAL_5) {
+    if(salDescontado > FAIXA_MENSAL_4) {
+        if(salDescontado > FAIXA_MENSAL_5) {
             impostoRenda += (FAIXA_MENSAL_5 - FAIXA_MENSAL_4) * PORC_FAIXA_4;
         }
         else {
-            impostoRenda += (salBruto - FAIXA_MENSAL_3) * PORC_FAIXA_3;
+            impostoRenda += (salDescontado - FAIXA_MENSAL_3) * PORC_FAIXA_3;
             goto anual;
         }
     }
 
-    if(salBruto > FAIXA_MENSAL_5) {
-         impostoRenda += (salBruto - FAIXA_MENSAL_5) * PORC_FAIXA_5;
+    if(salDescontado > FAIXA_MENSAL_5) {
+         impostoRenda += (salDescontado - FAIXA_MENSAL_5) * PORC_FAIXA_5;
     }
-anual:
 
+anual:
     salLiquido = salBruto - impostoRenda;
     printf("\n\nValores Mensais:\n");
     printf("\nSalário Mensal Bruto: %.2f\n", horaMes * valHora);
@@ -108,49 +110,48 @@ anual:
     //Calculos anuais
     impostoRenda = 0;
     desconto = dependentes * DESC_DEP_ANUAL;
-    salBruto = horaMes * valHora * MESES_RECEBIDOS;
-    salBruto -= desconto;
+    salBruto *= MESES_RECEBIDOS;
+    salDescontado = salBruto - desconto;
     
-    if(salBruto > FAIXA_ANUAL_2) {
-        if(salBruto > FAIXA_ANUAL_3) {
+    if(salDescontado > FAIXA_ANUAL_2) {
+        if(salDescontado > FAIXA_ANUAL_3) {
             impostoRenda += (FAIXA_ANUAL_3 - FAIXA_ANUAL_2) * PORC_FAIXA_2;
         }
         else {
-            impostoRenda += (salBruto - FAIXA_ANUAL_2) * PORC_FAIXA_2;
+            impostoRenda += (salDescontado - FAIXA_ANUAL_2) * PORC_FAIXA_2;
             goto fim;
         }
     }
     else {
-        salLiquido = salBruto;
+        salLiquido = salDescontado;
         goto fim;
     }
 
-    if(salBruto > FAIXA_ANUAL_3) {
-        if(salBruto > FAIXA_ANUAL_4) {
+    if(salDescontado > FAIXA_ANUAL_3) {
+        if(salDescontado > FAIXA_ANUAL_4) {
             impostoRenda += (FAIXA_ANUAL_4 - FAIXA_ANUAL_3) * PORC_FAIXA_3;
         }
         else {
-            impostoRenda += (salBruto - FAIXA_ANUAL_3) * PORC_FAIXA_3;
+            impostoRenda += (salDescontado - FAIXA_ANUAL_3) * PORC_FAIXA_3;
             goto fim;
         }
     }
 
-    if(salBruto > FAIXA_ANUAL_4) {
-        if(salBruto > FAIXA_ANUAL_5) {
+    if(salDescontado > FAIXA_ANUAL_4) {
+        if(salDescontado > FAIXA_ANUAL_5) {
             impostoRenda += (FAIXA_ANUAL_5 - FAIXA_ANUAL_4) * PORC_FAIXA_4;
         }
         else {
-            impostoRenda += (salBruto - FAIXA_ANUAL_3) * PORC_FAIXA_3;
+            impostoRenda += (salDescontado - FAIXA_ANUAL_3) * PORC_FAIXA_3;
             goto fim;
         }
     }
 
-    if(salBruto > FAIXA_ANUAL_5) {
-         impostoRenda += (salBruto - FAIXA_ANUAL_5) * PORC_FAIXA_5;
+    if(salDescontado > FAIXA_ANUAL_5) {
+         impostoRenda += (salDescontado - FAIXA_ANUAL_5) * PORC_FAIXA_5;
     }
 
 fim:
-
     salLiquido = salBruto - impostoRenda;
 
     printf("\n\nValores Anuais:\n");

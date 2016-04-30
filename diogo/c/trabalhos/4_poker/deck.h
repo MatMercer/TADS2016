@@ -33,3 +33,7 @@ typedef struct Cards{
 } Card;
 Card getRandCard();
 void generateDeckRandSeed();
+void generateCardPile();
+Card cardPile[53];
+Card pickCard();
+void printCard(Card x);

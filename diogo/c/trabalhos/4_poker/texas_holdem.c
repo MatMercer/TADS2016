@@ -49,7 +49,7 @@ int sumCardNums(Card c[5]) {
 //two pairs: 200 + all the cards values
 //pair: 100 + all the cards values
 //high card: sum of all the cards value (5 * 13 will never be more than 100 so...)
-int returnPower(Card c[5]) {
+int getHandPower(Card c[5]) {
     p = sumCardNums(c);
     return p; 
 }

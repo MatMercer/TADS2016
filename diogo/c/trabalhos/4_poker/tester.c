@@ -32,6 +32,6 @@ int main() {
     printf("\n\n");
     printMiddleCards();
 
-    printf("\nPower: %d", returnPower(middle));
+    printf("\nPower: %d", getHandPower(middle));
     return 0;
 }

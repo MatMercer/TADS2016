@@ -71,6 +71,10 @@ int getHandPower(Card c[5]) {
         p += 400;
         return p;
     }
+    if(threeOfAKind(c)) {
+        p += 300;
+        return p;
+    }
     return p; 
 }
 
@@ -153,5 +157,26 @@ int straight(Card c[5]) {
         else 
             return 0;
     }
+    return 1;
+}
+
+//checks for a three of a kind
+int threeOfAKind(Card c[5]) {
+    if(c[0].num == c[2].num)
+        g = 0;
+    else if(c[1].num == c[3].num)
+        g = 1;
+    else if(c[2].num == c[4].num)
+        g = 2;
+    else
+        return 0;
+    
+    for(w = g; w < 5 - g; w++) {
+        if(c[w].num == c[g].num)
+            continue;
+        else 
+            return 0;
+    }
+
     return 1;
 }

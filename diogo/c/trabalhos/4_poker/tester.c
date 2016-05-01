@@ -9,13 +9,13 @@ int main() {
     Card c;
     Card testHand[5];
     testHand[0].suit = 1;
-    testHand[0].num = 1;
+    testHand[0].num = 2;
     testHand[1].suit = 2;
-    testHand[1].num = 3;
+    testHand[1].num = 2;
     testHand[2].suit = 3;
-    testHand[2].num = 4;
+    testHand[2].num = 2;
     testHand[3].suit = 2;
-    testHand[3].num = 2;
+    testHand[3].num = 8;
     testHand[4].suit = 4;
     testHand[4].num = 5;
 

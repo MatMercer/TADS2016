@@ -54,6 +54,10 @@ int getHandPower(Card c[5]) {
         p += 800;
         return p;
     }
+    if(fourOfAKind(c)) {
+        p += 700;
+        return p;
+    }
     return p; 
 }
 
@@ -69,10 +73,22 @@ int royalFlush(Card c[5]) {
     return 1;
 }
 
+//checks for a straightFlush
 int straightFlush(Card c[5]) {
     for(w = 1; w < 5; w++) {
         //if suit is always the same and num is in the sequence
         if(c[w].suit == c[0].suit && c[w].num == c[0].num - w)
+            continue;
+        else 
+            return 0;
+    }
+    return 1;
+}
+
+//checks for a four of a kind
+int fourOfAKind(Card c[5]) {
+    for(w = 1; w < 4; w++) {
+        if(c[w].num == c[0].num)
             continue;
         else 
             return 0;

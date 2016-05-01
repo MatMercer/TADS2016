@@ -100,6 +100,15 @@ void sortCards(Card c[5]) {
     }
 }
 
+
+//prints 5 cards
+void print5Cards(Card c[5]) {
+    for(i = 0; i < 5; i++) {
+        printCard(c[i]);
+        printf(" ");
+    }
+}
+
 //prints a given card
 void printCard(Card x) {
     switch (x.suit) {

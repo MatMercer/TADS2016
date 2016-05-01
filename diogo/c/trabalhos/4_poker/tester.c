@@ -7,6 +7,17 @@ int main() {
     generateCardPile();
     generateDeckRandSeed();
     Card c;
+    Card testHand[5];
+    testHand[0].suit = 1;
+    testHand[0].num = 10;
+    testHand[1].suit = 1;
+    testHand[1].num = 12;
+    testHand[2].suit = 1;
+    testHand[2].num = 13;
+    testHand[3].suit = 1;
+    testHand[3].num = 11;
+    testHand[4].suit = 1;
+    testHand[4].num = 9;
 
     printf("\nGenerated cards:\n");
 
@@ -30,8 +41,8 @@ int main() {
     newGame();
 
     printf("\n\n");
-    printMiddleCards();
+    print5Cards(testHand);
 
-    printf("\nPower: %d", getHandPower(middle));
+    printf("\nPower: %d", getHandPower(testHand));
     return 0;
 }

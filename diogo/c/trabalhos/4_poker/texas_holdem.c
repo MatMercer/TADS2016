@@ -22,13 +22,6 @@ void newGame() {
     generateMiddleCards();
 }
 
-//prints the 5 middle cars
-void printMiddleCards() {
-    for(w = 0; w < 5; w++) {
-        printCard(middle[w]);
-        printf(" ");
-    }
-}
 
 int sumCardNums(Card c[5]) {
     sum = 0;

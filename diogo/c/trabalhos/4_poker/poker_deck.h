@@ -38,3 +38,4 @@ Card cardPile[53];
 Card pickCard();
 void sortCards(Card c[5]);
 void printCard(Card x);
+void print5Cards(Card c[5]);

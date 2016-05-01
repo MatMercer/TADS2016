@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "deck.h"
+#include "poker_deck.h"
 
 int main() {
     int i = 0;

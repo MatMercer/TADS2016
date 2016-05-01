@@ -51,5 +51,6 @@ int sumCardNums(Card c[5]) {
 //high card: sum of all the cards value (5 * 13 will never be more than 100 so...)
 int getHandPower(Card c[5]) {
     p = sumCardNums(c);
+    sortCards(c);
     return p; 
 }

@@ -85,6 +85,21 @@ void generateDeckRandSeed() {
     srand(time(NULL));
 }
 
+//insertion sort implement
+//to sort the cards
+void sortCards(Card c[5]) {
+    Card pivot;
+    for(i = 1; i < 5; i++) {
+        pivot = c[i];
+        j = i - 1;
+        while(j >= 0 && c[j].num < pivot.num) {
+            c[j + 1] = c[j];
+            j -= 1;
+        }
+        c[j + 1] = pivot;
+    }
+}
+
 //prints a given card
 void printCard(Card x) {
     switch (x.suit) {

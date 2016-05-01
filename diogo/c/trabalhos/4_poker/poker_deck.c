@@ -50,23 +50,23 @@ void generateCardPile() {
     cardCount = z;
 }
 
-//pick a random card of
-//from card pile
+//pick a random card
+//from the card pile
 Card pickCard() {
 
     //select a random card
-    //based in teh cardPile
+    //based in the cardPile
     //size
     randVar = (double)rand()/RAND_MAX;
     i = cardCount * randVar;
     c = cardPile[i];
-    
+
     //shift all the cards to the left from
     //the choosen one
     for(j = i + 1; j <= cardCount; j++) {
         cardPile[j - 1] = cardPile[j];
     }
-    
+
     //decrement the cardPile
     //preventing dupe cards
     cardCount -= 1;
@@ -75,7 +75,7 @@ Card pickCard() {
     if(!cardCount) {
         printf("\nThe cardPile is empty!");
     }
-    
+
     //return the picked card
     return c;
 }

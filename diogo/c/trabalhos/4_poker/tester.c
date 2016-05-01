@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "poker_deck.h"
+#include "texas_holdem.h"
 
 int main() {
     int i = 0;
@@ -25,5 +26,9 @@ int main() {
         printCard(c);
     }
 
+    newGame();
+
+    printf("\n\n");
+    printMiddleCards();
     return 0;
 }

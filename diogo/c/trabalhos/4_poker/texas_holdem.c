@@ -63,6 +63,10 @@ int getHandPower(Card c[5]) {
         p += 600;
         return p;
     }
+    if(flush(c)) {
+        p += 500;
+        return p;
+    }
     return p; 
 }
 
@@ -119,6 +123,17 @@ int fullHouse(Card c[5]) {
     //checks the second part
     for(w = 2 + g; w < 5; w++) {
         if(c[w].num == c[2 + g].num)
+            continue;
+        else 
+            return 0;
+    }
+    return 1;
+}
+
+//checks for a flush
+int flush(Card c[5]) {
+    for(w = 1; w < 5; w++) {
+        if(c[w].suit == c[0].suit)
             continue;
         else 
             return 0;

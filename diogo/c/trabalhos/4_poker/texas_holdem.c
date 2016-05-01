@@ -67,6 +67,10 @@ int getHandPower(Card c[5]) {
         p += 500;
         return p;
     }
+    if(straight(c)) {
+        p += 400;
+        return p;
+    }
     return p; 
 }
 
@@ -134,6 +138,17 @@ int fullHouse(Card c[5]) {
 int flush(Card c[5]) {
     for(w = 1; w < 5; w++) {
         if(c[w].suit == c[0].suit)
+            continue;
+        else 
+            return 0;
+    }
+    return 1;
+}
+
+//checks for a straight
+int straight(Card c[5]) {
+    for(w = 1; w < 5; w++) {
+        if(c[w].num == c[0].num - w)
             continue;
         else 
             return 0;

@@ -52,5 +52,24 @@ int sumCardNums(Card c[5]) {
 int getHandPower(Card c[5]) {
     p = sumCardNums(c);
     sortCards(c);
+
+    if(royalFlush(c)) {
+        p += 900;
+        return p;
+    }
     return p; 
+}
+
+//checks for a royal flush
+int royalFlush(Card c[5]) {
+    int pivotSuit = c[0].suit;
+    
+    for(w = 0; w < 5; w++) {
+        //if suit is always the same and num is in the sequence
+        if(c[w].suit == pivotSuit && c[w].num == 13 - w)
+            continue;
+        else 
+            return 0;
+    }
+    return 1;
 }

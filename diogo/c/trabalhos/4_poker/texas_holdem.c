@@ -3,6 +3,7 @@
 
 //util vars
 int w = 0;
+int g = 0;
 int p;
 int sum;
 
@@ -58,6 +59,10 @@ int getHandPower(Card c[5]) {
         p += 700;
         return p;
     }
+    if(fullHouse(c)) {
+        p += 600;
+        return p;
+    }
     return p; 
 }
 
@@ -89,6 +94,31 @@ int straightFlush(Card c[5]) {
 int fourOfAKind(Card c[5]) {
     for(w = 1; w < 4; w++) {
         if(c[w].num == c[0].num)
+            continue;
+        else 
+            return 0;
+    }
+    return 1;
+}
+
+//checks for a full house
+int fullHouse(Card c[5]) {
+    if(c[0].num == c[2].num)
+        g = 1;
+    else
+        g = 0;
+
+    //checks the first part
+    for(w = 1; w < 2 + g; w++) {
+        if(c[w].num == c[0].num)
+            continue;
+        else 
+            return 0;
+    }
+
+    //checks the second part
+    for(w = 2 + g; w < 5; w++) {
+        if(c[w].num == c[2 + g].num)
             continue;
         else 
             return 0;

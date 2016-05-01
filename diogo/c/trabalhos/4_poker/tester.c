@@ -17,7 +17,7 @@ int main() {
     testHand[3].suit = 1;
     testHand[3].num = 10;
     testHand[4].suit = 2;
-    testHand[4].num = 10;
+    testHand[4].num = 8;
 
     printf("\nGenerated cards:\n");
 

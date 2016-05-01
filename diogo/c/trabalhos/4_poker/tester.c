@@ -26,9 +26,12 @@ int main() {
         printCard(c);
     }
 
+
     newGame();
 
     printf("\n\n");
     printMiddleCards();
+
+    printf("\nPower: %d", returnPower(middle));
     return 0;
 }

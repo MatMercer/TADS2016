@@ -178,7 +178,7 @@ int threeOfAKind(Card c[5]) {
         g = 2;
     else
         return 0;
-    
+
     for(w = g; w < 5 - g; w++) {
         if(c[w].num == c[g].num)
             continue;

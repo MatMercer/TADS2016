@@ -79,6 +79,10 @@ int getHandPower(Card c[5]) {
         p += 200;
         return p;
     }
+    if(pair(c)) {
+        p += 100;
+        return p;
+    }
     return p; 
 }
 
@@ -209,4 +213,14 @@ int twoPairs(Card c[5]) {
     }
 
     return 1;
+}
+
+int pair(Card c[5]) {
+    for(w = 0; w < 4; w++) {
+        for(g = w + 1; g < 5; g++) {
+            if(c[w].num == c[g].num)
+                return 1;
+        }
+    }
+    return 0;
 }

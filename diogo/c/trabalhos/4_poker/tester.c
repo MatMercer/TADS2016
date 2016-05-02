@@ -9,15 +9,15 @@ int main() {
     Card c;
     Card testHand[5];
     testHand[0].suit = 1;
-    testHand[0].num = 2;
+    testHand[0].num = 7;
     testHand[1].suit = 2;
-    testHand[1].num = 2;
+    testHand[1].num = 7;
     testHand[2].suit = 3;
-    testHand[2].num = 11;
+    testHand[2].num = 5;
     testHand[3].suit = 2;
-    testHand[3].num = 11;
+    testHand[3].num = 3;
     testHand[4].suit = 4;
-    testHand[4].num = 13;
+    testHand[4].num = 2;
 
     printf("\nGenerated cards:\n");
 

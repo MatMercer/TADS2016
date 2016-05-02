@@ -31,11 +31,28 @@ typedef struct Cards{
     unsigned int suit:3;
     unsigned int num:4;
 } Card;
+
+//generates a random card
 Card getRandCard();
+
+//used to generate a seed for rand()
 void generateDeckRandSeed();
+
+//generates a card pile with 52 cards
 void generateCardPile();
+
+//the card pile
 Card cardPile[53];
+
+//picks a random card from cardPile
+//subtracting it
 Card pickCard();
+
+//sorts a give card, from A to 1
 void sortCards(Card c[5]);
+
+//prints a card
 void printCard(Card x);
+
+//prints 5 cards in a row
 void print5Cards(Card c[5]);

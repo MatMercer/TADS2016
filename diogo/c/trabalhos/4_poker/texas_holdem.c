@@ -189,6 +189,7 @@ int threeOfAKind(Card c[5]) {
     return 1;
 }
 
+//checks for two pairs
 int twoPairs(Card c[5]) {
     if(c[0].num == c[1].num)
         g = 0;
@@ -215,6 +216,7 @@ int twoPairs(Card c[5]) {
     return 1;
 }
 
+//checks for a pair
 int pair(Card c[5]) {
     for(w = 0; w < 4; w++) {
         for(g = w + 1; g < 5; g++) {

@@ -75,6 +75,10 @@ int getHandPower(Card c[5]) {
         p += 300;
         return p;
     }
+    if(twoPairs(c)) {
+        p += 200;
+        return p;
+    }
     return p; 
 }
 
@@ -176,6 +180,32 @@ int threeOfAKind(Card c[5]) {
             continue;
         else 
             return 0;
+    }
+
+    return 1;
+}
+
+int twoPairs(Card c[5]) {
+    if(c[0].num == c[1].num)
+        g = 0;
+    else
+        g = 1;
+
+    for(w = g; w < 2 + g; w++) {
+        if(c[w].num == c[g].num)
+            continue;
+        else 
+            return 0;
+    }
+
+    for(w = 2 + g; w < 4 + g; w++) {
+        if(c[w].num == c[2 + g].num)
+            continue;
+        else {
+            if(c[3].num == c[4].num)
+                continue;
+            return 0;
+        }
     }
 
     return 1;

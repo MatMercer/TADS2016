@@ -24,9 +24,9 @@ void newGame() {
 }
 
 
-int sumCardNums(Card c[5]) {
+int sumCardNums(Card c[5], int until) {
     sum = 0;
-    for(w = 0; w < 5; w++) {
+    for(w = 0; w < 5 - until; w++) {
         sum += c[w].num;
     }
     return sum;
@@ -44,7 +44,8 @@ int sumCardNums(Card c[5]) {
 //pair: 100 + all the cards values
 //high card: sum of all the cards value (5 * 13 will never be more than 100 so...)
 int getHandPower(Card c[5]) {
-    p = sumCardNums(c);
+    p = sumCardNums(c, 0);
+    p += sumCardNums(c, 1);
     sortCards(c);
 
     if(royalFlush(c)) {

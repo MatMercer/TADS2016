@@ -15,6 +15,7 @@ public class TrocaTroca {
 			a = a - b;
 
 			System.out.println(a + " | " + b);
+			System.out.println(i + " | " + j);
 		}
 	}
 

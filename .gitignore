@@ -31,5 +31,13 @@
 # Debug files
 *.dSYM/
 
-#VIM swap files
+# VIM swap files
 *.swp
+
+# Java & Eclipse stuff
+*.class
+.metadata
+bin
+.settings
+.classpath
+.project

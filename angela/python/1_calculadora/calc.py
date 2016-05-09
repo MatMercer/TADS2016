@@ -1,8 +1,8 @@
-print("                  ")
-print("  CALCULADORA     ")
-print("            PIKA  ")
-print("      3000        ")
-print("                  ")
+print("                 ")
+print("   CALCULADORA   ")
+print("    QUALQUER     ")
+print("      3000       ")
+print("                 ")
 
 #funcoes
 
@@ -66,8 +66,9 @@ def mediaPonderada(ls, p = None):
 
 
 #msg boas vindas
-print("Funcoes desta calculadora:")
+print("Calculadora feita para ser usada na\nverificação dos resultados de exercicios\nresolvidos de matemática relacionados\ncom os conteúdos do curso de TADS no IFPR.")
+print("\nFuncoes desta calculadora:")
 
 for func in dir():
     if(func[0] != '_' and func != 'os' and func != 'call'):
-        print("|-| " + func)
+        print("|+| " + func)

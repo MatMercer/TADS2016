@@ -1,1 +1,0 @@
-python3 -i -c "exec(\"import os\\nfrom subprocess import call\\nexec(open('/media/' + os.environ['LOGNAME'] + '/MRANYONE/docs/work/ifpr/angela/2_calculos_python/calc.py').read())\")"

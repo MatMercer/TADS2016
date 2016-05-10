@@ -12,4 +12,4 @@ fi
 
 CALC=$(realpath ./calc.py)
 
-python3 -i -c "exec(\"import os\\nfrom subprocess import call\\nexec(open('$CALC').read())\")"
+python3 -i -c "exec(\"from subprocess import call\\nexec(open('$CALC').read())\")"

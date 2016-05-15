@@ -14,9 +14,6 @@ double randVar = 0;
 //a single card var for storage
 Card c;
 
-//the cardPile
-Card cardPile[53];
-
 //card count in cardPile
 short cardCount;
 
@@ -38,7 +35,7 @@ void generateCardPile() {
     //i is the number (1 - 13)
     //j is the suit (1 - 4)
     for(z = 0, i = 1; i < 14; i++) {
-        for(z, j = 1; j < 5; j++, z++) {
+        for(j = 1; j < 5; j++, z++) {
             cardPile[z].num = i;
             cardPile[z].suit = j;
         }

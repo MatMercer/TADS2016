@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "pokercard.h"
 #include "lists.h"
+#include "pokercard.h"
 
 /* 
  * Generates a cardCode based on this

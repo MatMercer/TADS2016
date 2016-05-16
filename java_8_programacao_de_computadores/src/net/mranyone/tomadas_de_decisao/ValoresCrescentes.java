@@ -5,26 +5,28 @@ import java.util.Scanner;
 public class ValoresCrescentes {
 
 	public static void main(String[] args) {
-		int vet = 0;
+		int idx = 0;
 		Scanner s = new Scanner(System.in);
 		System.out.println("Quantos números você quer sortear?");
 		
 		int v[] = new int[s.nextInt()];
 		
-		
-		// for i in v...
 		for (int i = 0; i < v.length; i++) {
 			System.out.println("Insira um número:");
 			v[i] = s.nextInt();
 		}
 		
 		for (int i = 0; i < v.length; i++) {
-			vet = v[i];
-			for (int j = 1; j < v.length; j++) {
-				if (vet > v[j]) {
-					v[i] = v[j];
-					v[j] = vet;
+			idx = i;
+			for (int j = i + 1; j < v.length; j++) {
+				if (v[idx] > v[j]) {
+					idx = j;
 				}
+			}
+			if(v[idx] != v[i]) {
+				v[i] += v[idx];
+				v[idx] = v[i] - v[idx];
+				v[i] -= v[idx];
 			}
 		}
 		

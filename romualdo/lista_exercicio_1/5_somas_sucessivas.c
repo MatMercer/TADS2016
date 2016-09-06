@@ -19,5 +19,6 @@ int main() {
     for(num2 > 0; num2 > 0; num2 -= 1, mult += num1);
 
     printf("%d\n", mult);
+
     return 0;
 }

@@ -21,4 +21,6 @@ int main() {
     }
 
     printf("\nDemora %d anos para Cicrano ficar mais alto que Fulano.\n", anos);
+
+    return 0;
 }

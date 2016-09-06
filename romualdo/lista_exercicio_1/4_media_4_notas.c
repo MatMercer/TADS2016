@@ -43,6 +43,8 @@ int main() {
     else {
         printf("\nO aluno foi reprovado\n");
     }
+
+    return 0;
 }
 
 /**

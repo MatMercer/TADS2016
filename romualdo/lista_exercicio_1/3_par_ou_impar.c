@@ -16,4 +16,6 @@ int main() {
     else {
         printf("\nEsse número é par!\n");
     }
+
+    return 0;
 }

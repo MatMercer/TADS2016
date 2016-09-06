@@ -2,12 +2,14 @@
 #include <stdlib.h>
 
 #define NUM_NOTAS 4
+#define NOTA_EXAME 7
 
 float getNotaRand();
 
 /**
  * Programa que calcula a media de 4
- * notas randômicas.
+ * notas randômicas e diz se o aluno
+ * foi reprovado ou não.
 **/
 
 int main() {
@@ -34,6 +36,13 @@ int main() {
     media /= NUM_NOTAS;
 
     printf("\nA media é %0.2f\n", media);
+
+    if(media >= NOTA_EXAME) {
+        printf("\nO aluno foi para o exame.\n");
+    }
+    else {
+        printf("\nO aluno foi reprovado\n");
+    }
 }
 
 /**

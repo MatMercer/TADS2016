@@ -16,7 +16,7 @@ int main() {
 
     printf("%d * %d = ", num1, num2);
     
-    for(num2 > 0; num2 > 0; num2 -= 1, mult += num1);
+    for(mult = 0; num2 > 0; num2 -= 1, mult += num1);
 
     printf("%d\n", mult);
 

@@ -19,6 +19,6 @@ int main() {
         }
     }
 
-    printf("%d", venda[quantidadeVendas].data.dia);
+    printf("%d\n", venda[0].data.dia);
     return 0;
 }

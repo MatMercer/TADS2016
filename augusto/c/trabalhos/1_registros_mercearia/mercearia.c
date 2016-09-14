@@ -5,7 +5,7 @@ void getVendaUsuario(Venda *venda) {
     getNomeProdutoUsuario(venda);
     getPrecoProdutoUsuario(venda);
     getDescontoUsuario(venda);
-    getDataUsuario(venda);
+    getDataUsuario(&venda->data);
 }
 
 void getNomeProdutoUsuario(Venda *venda) {
@@ -29,22 +29,22 @@ void getDescontoUsuario(Venda *venda) {
     while(scanf("%f", &venda->desconto) != 1 || venda->desconto < 0 || venda->desconto > 100);
 }
 
-void getDataUsuario(Venda *venda) {
+void getDataUsuario(Data *data) {
     do {
         printf("Insira o dia da venda: ");
         __fpurge(stdin);
     }
-    while(scanf("%d", &venda->data.dia) != 1 || venda->data.dia > 31 || venda->data.dia <= 0);
+    while(scanf("%d", &data->dia) != 1 || data->dia > 31 || data->dia <= 0);
     
     do {
         printf("Insira o mes da venda: ");
         __fpurge(stdin);
     }
-    while(scanf("%d", &venda->data.mes) != 1 || venda->data.mes > 12 || venda->data.mes <= 0);
+    while(scanf("%d", &data->mes) != 1 || data->mes > 12 || data->mes <= 0);
     
     do {
         printf("Insira o ano da venda: ");
         __fpurge(stdin);
     }
-    while(scanf("%d", &venda->data.ano) != 1 || venda->data.ano <= 0);
+    while(scanf("%d", &data->ano) != 1 || data->ano <= 0);
 }

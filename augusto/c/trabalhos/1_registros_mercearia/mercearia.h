@@ -14,5 +14,5 @@ typedef struct Vendas {
 void getVendaUsuario(Venda *venda);
 void getDescontoUsuario(Venda *venda);
 void getPrecoProdutoUsuario(Venda *venda);
-void getDataUsuario(Venda *venda);
+void getDataUsuario(Data *data);
 void getNomeProdutoUsuario(Venda *venda);

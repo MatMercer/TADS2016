@@ -1,3 +1,5 @@
+#define MAX_VENDAS 100
+
 typedef struct Datas {
     int dia;
     int mes;
@@ -16,3 +18,9 @@ void getDescontoUsuario(Venda *venda);
 void getPrecoProdutoUsuario(Venda *venda);
 void getDataUsuario(Data *data);
 void getNomeProdutoUsuario(Venda *venda);
+
+void printVenda(Venda venda);
+
+void relatorioVenda(Venda *vendas, Data dataInicial, Data dataFinal, int quantidade);
+
+int intervalo(Data min, Data x, Data max);

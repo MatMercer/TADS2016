@@ -2,33 +2,34 @@
 #include "mercearia.h"
 
 int main() {
-    Venda venda[100];
+    Venda vendas[MAX_VENDAS];
     Data relatorioDataInicial;
     Data relatorioDataFinal;
     int quantidadeVendas = 0;    
     char opcao = 0;
     
     while(opcao != 's' && opcao != 'S') {
-        printf("Programa para controle vendas de uma mercearia\nOpcoes:\nv: Registrar uma venda\nr: Relatorio com data inicial e final\ns: Sair\nInsira sua opcao: ");
+        printf("\nPrograma para controle vendas de uma mercearia\n\nOpcoes:\nv: Registrar uma venda\nr: Relatorio com data inicial e final\ns: Sair\n\nInsira sua opcao: ");
         scanf("%c", &opcao);
         __fpurge(stdin);
 
         if(opcao == 'v' || opcao == 'V') {
-            printf("Note que o maximo de vendas que podem ser registradas eh 100.\n");
-            getVendaUsuario(&venda[quantidadeVendas]);
+            printf("\nNote que o maximo de vendas que podem ser registradas eh %d.\n", MAX_VENDAS);
+            getVendaUsuario(&vendas[quantidadeVendas]);
             quantidadeVendas += 1;
             __fpurge(stdin);
         }
 
         if(opcao == 'r' || opcao == 'R') {
-            printf("Data Inicial:\n");
+            printf("\nData Inicial:\n");
             getDataUsuario(&relatorioDataInicial);
-            printf("Data Final:\n");
+            printf("\nData Final:\n");
             getDataUsuario(&relatorioDataFinal);
             __fpurge(stdin);
+
+            relatorioVenda(vendas, relatorioDataInicial, relatorioDataFinal, quantidadeVendas);
         }
     }
 
-    printf("%d\n", venda[0].data.dia);
     return 0;
 }

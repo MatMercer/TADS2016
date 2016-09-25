@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 typedef struct matrizes {
     int **m;
@@ -11,14 +12,16 @@ void getMatriz(int linhas, int colunas, matriz *m);
 void printMatriz(matriz m);
 void freeMatriz(matriz *m);
 void zeroMatriz(matriz m);
-
+void fillRandMatriz(matriz m, int range);
 
 int main() {
+    srand((unsigned)time(NULL));
     matriz m;
     int i = 0;
 
-    for(i = 0; i < 10; i++) {
-        getMatriz(10 - i, i + 1, &m);
+    for(i = 0; i < 200; i++) {
+        getMatriz(200 - i, i + 1, &m);
+        fillRandMatriz(m, 1000);
         printMatriz(m);
         printf("----------------------------------------\n");
     }
@@ -41,7 +44,6 @@ void getMatriz(int linhas, int colunas, matriz *m) {
 
     m->linhas = linhas;
     m->colunas = colunas;
-    //zeroMatriz(*m);
 }
 
 void printMatriz(matriz m) {
@@ -61,7 +63,7 @@ void freeMatriz(matriz *m) {
     int i = 0;
     for(i = 0; i < m->linhas; i++) {
         printf("Freeing Adress %p...\n", m->m[i]);
-        free(m->m[i]); 
+        free(m->m[i]);
     }
     printf("Freeing Adress %p...\n", m->m);
     free(m->m);
@@ -78,5 +80,16 @@ void zeroMatriz(matriz m) {
         for(j = 0; j < m.colunas; j++) {
             m.m[i][j] = 0;
         }
-    }    
+    }
+}
+
+void fillRandMatriz(matriz m, int range) {
+    int i = 0;
+    int j = 0;
+
+    for(i = 0; i < m.linhas; i++) {
+        for(j = 0; j < m.colunas; j++) {
+            m.m[i][j] = (rand() % range) + 1;
+        }
+    }
 }

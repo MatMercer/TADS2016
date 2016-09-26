@@ -2,35 +2,35 @@
 #include <stdlib.h>
 #include <time.h>
 
-typedef struct matrizes {
+typedef struct matrixes {
     int **m;
-    int linhas;
-    int colunas;
-} matriz;
+    int rows;
+    int columns;
+} matrix;
 
-void getMatriz(int linhas, int colunas, matriz *m);
-void printMatriz(matriz m);
-void freeMatriz(matriz *m);
-void zeroMatriz(matriz m);
-void fillRandMatriz(matriz m, int range);
-matriz sumMatriz(matriz x, matriz y);
-matriz subMatriz(matriz x, matriz y);
-matriz multMatriz(matriz x, matriz y);
-matriz transMatriz(matriz x);
-matriz initMatriz();
-int validMatriz(matriz m);
+void getMatrix(int linhas, int colunas, matrix *m);
+void printMatrix(matrix m);
+void freeMatrix(matrix *m);
+void zeroMatrix(matrix m);
+void fillRandMatrix(matrix m, int range);
+matrix sumMatrix(matrix x, matrix y);
+matrix subMatrix(matrix x, matrix y);
+matrix multMatrix(matrix x, matrix y);
+matrix transMatrix(matrix x);
+matrix initMatrix();
+int validMatrix(matrix m);
 
 int main() {
     srand((unsigned)time(NULL));
     int max = 5;
-    matriz m1 = initMatriz();
-    matriz m2 = initMatriz();
+    matrix m1 = initMatrix();
+    matrix m2 = initMatrix();
 
     int i = 0;
 
-    getMatriz(2, 2, &m1);
+    getMatrix(2, 2, &m1);
 
-    getMatriz(3, 2, &m2);
+    getMatrix(3, 2, &m2);
 
     m1.m[0][0] = 3;
     m1.m[0][1] = 1;
@@ -44,130 +44,130 @@ int main() {
     m2.m[2][0] = 1;
     m2.m[2][1] = 4;
 
-    printMatriz(m2);
-    printMatriz(m1);
+    printMatrix(m2);
+    printMatrix(m1);
 
-    printMatriz(multMatriz(m2, m1));
+    printMatrix(multMatrix(m2, m1));
 
     for(i = 0; i < max; i++) {
         printf("------------------------------------------------------------\n");
-        getMatriz(max - i, i + 1, &m1);
-        getMatriz(max - i, i + 1, &m2);
-        fillRandMatriz(m1, 10);
-        fillRandMatriz(m2, 10);
-        printMatriz(m1);
-        printMatriz(m2);
-        printf("Soma:\n");
-        printMatriz(sumMatriz(m1, m2));
-        printf("Subtração:\n");
-        printMatriz(subMatriz(m1, m2));
-        printf("Multiplicação:\n");
-        printMatriz(multMatriz(m1, m2));
+        getMatrix(max - i, i + 1, &m1);
+        getMatrix(max - i, i + 1, &m2);
+        fillRandMatrix(m1, 10);
+        fillRandMatrix(m2, 10);
+        printMatrix(m1);
+        printMatrix(m2);
+        printf("Sum:\n");
+        printMatrix(sumMatrix(m1, m2));
+        printf("Subtraction:\n");
+        printMatrix(subMatrix(m1, m2));
+        printf("Multiply:\n");
+        printMatrix(multMatrix(m1, m2));
     }
     return 0;
 }
 
-matriz initMatriz() {
-    matriz m;
+matrix initMatrix() {
+    matrix m;
 
-    m.linhas = 0;
-    m.colunas = 0;
+    m.rows = 0;
+    m.columns = 0;
     return m;
 }
 
-void getMatriz(int linhas, int colunas, matriz *m) {
-    if(linhas > 0 && colunas > 0) {
-        if(m->colunas > 0 || m->linhas > 0) {
-            freeMatriz(m);
+void getMatrix(int rows, int columns, matrix *m) {
+    if(rows > 0 && columns > 0) {
+        if(m->columns > 0 || m->rows > 0) {
+            freeMatrix(m);
         }
 
-        m->m = calloc(linhas, sizeof(int*));
+        m->m = calloc(rows, sizeof(int*));
         int i = 0;
 
-        for(i = 0; i < linhas; i++) {
-            m->m[i] = calloc(colunas, sizeof(int));
+        for(i = 0; i < rows; i++) {
+            m->m[i] = calloc(columns, sizeof(int));
         }
 
-        m->linhas = linhas;
-        m->colunas = colunas;
+        m->rows = rows;
+        m->columns = columns;
     }
 }
 
-void printMatriz(matriz m) {
+void printMatrix(matrix m) {
     int i = 0;
     int j = 0;
-    printf("\nMatriz %d * %d\n", m.linhas, m.colunas);
+    printf("\nMatrix %d * %d\n", m.rows, m.columns);
     printf("┌");
-    for(i = 0; i < m.colunas + 1; i++) {
+    for(i = 0; i < m.columns + 1; i++) {
         printf("\t");
     }
     printf("┐\n");
-    for(i = 0; i < m.linhas; i++) {
-        for(j = 0; j < m.colunas; j++) {
+    for(i = 0; i < m.rows; i++) {
+        for(j = 0; j < m.columns; j++) {
             if(j == 0) {
                 printf("│\t");
             }
             printf("%d\t", m.m[i][j]);
-            if(m.colunas - j == 1) {
+            if(m.columns - j == 1) {
                 printf("│");
             }
         }
         printf("\n");
     }
     printf("└");
-    for(i = 0; i < m.colunas + 1; i++) {
+    for(i = 0; i < m.columns + 1; i++) {
         printf("\t");
     }
     printf("┘\n");
 }
 
-void freeMatriz(matriz *m) {
-    //printf("Free matriz!\n");
+void freeMatrix(matrix *m) {
+    //printf("Free matrix!\n");
     int i = 0;
-    for(i = 0; i < m->linhas; i++) {
+    for(i = 0; i < m->rows; i++) {
         //printf("Freeing Adress %p...\n", m->m[i]);
         free(m->m[i]);
     }
     //printf("Freeing Adress %p...\n", m->m);
     free(m->m);
 
-    m->linhas = 0;
-    m->colunas = 0;
+    m->rows = 0;
+    m->columns = 0;
 }
 
-void zeroMatriz(matriz m) {
+void zeroMatrix(matrix m) {
     int i = 0;
     int j = 0;
 
-    for(i = 0; i < m.linhas; i++) {
-        for(j = 0; j < m.colunas; j++) {
+    for(i = 0; i < m.rows; i++) {
+        for(j = 0; j < m.columns; j++) {
             m.m[i][j] = 0;
         }
     }
 }
 
-void fillRandMatriz(matriz m, int range) {
+void fillRandMatrix(matrix m, int range) {
     int i = 0;
     int j = 0;
 
-    for(i = 0; i < m.linhas; i++) {
-        for(j = 0; j < m.colunas; j++) {
+    for(i = 0; i < m.rows; i++) {
+        for(j = 0; j < m.columns; j++) {
             m.m[i][j] = (rand() % range) + 1;
         }
     }
 }
 
-matriz sumMatriz(matriz x, matriz y) {
-    matriz z = initMatriz();
+matrix sumMatrix(matrix x, matrix y) {
+    matrix z = initMatrix();
 
-    if(x.linhas == y.linhas && x.colunas == y.colunas) {
-        getMatriz(x.linhas, x.colunas, &z);
+    if(x.rows == y.rows && x.columns == y.columns) {
+        getMatrix(x.rows, x.columns, &z);
 
         int i = 0;
         int j = 0;
 
-        for(i = 0; i < x.linhas; i++) {
-            for(j = 0; j < x.colunas; j++) {
+        for(i = 0; i < x.rows; i++) {
+            for(j = 0; j < x.columns; j++) {
                 z.m[i][j] = x.m[i][j] + y.m[i][j];
             }
         }
@@ -176,17 +176,17 @@ matriz sumMatriz(matriz x, matriz y) {
     return z;
 }
 
-matriz subMatriz(matriz x, matriz y) {
-    matriz z = initMatriz();
+matrix subMatrix(matrix x, matrix y) {
+    matrix z = initMatrix();
 
-    if(x.linhas == y.linhas && x.colunas == y.colunas) {
-        getMatriz(x.linhas, x.colunas, &z);
+    if(x.rows == y.rows && x.columns == y.columns) {
+        getMatrix(x.rows, x.columns, &z);
 
         int i = 0;
         int j = 0;
 
-        for(i = 0; i < x.linhas; i++) {
-            for(j = 0; j < x.colunas; j++) {
+        for(i = 0; i < x.rows; i++) {
+            for(j = 0; j < x.columns; j++) {
                 z.m[i][j] = x.m[i][j] - y.m[i][j];
             }
         }
@@ -195,17 +195,17 @@ matriz subMatriz(matriz x, matriz y) {
     return z;
 }
 
-matriz transMatriz(matriz x) {
-    matriz y = initMatriz();
+matrix transMatrix(matrix x) {
+    matrix y = initMatrix();
 
 
-    getMatriz(x.colunas, x.linhas, &y);
+    getMatrix(x.columns, x.rows, &y);
 
     int i = 0;
     int j = 0;
 
-    for(i = 0; i < y.linhas; i++) {
-        for(j = 0; j < y.colunas; j++) {
+    for(i = 0; i < y.rows; i++) {
+        for(j = 0; j < y.columns; j++) {
             y.m[i][j] = x.m[j][i];
         }
     }
@@ -213,8 +213,8 @@ matriz transMatriz(matriz x) {
     return y;
 }
 
-int validMatriz(matriz m) {
-    if(m.linhas >= 0 && m.colunas >= 0) {
+int validMatrix(matrix m) {
+    if(m.rows >= 0 && m.columns >= 0) {
         return 1;
     }
     else {
@@ -222,20 +222,20 @@ int validMatriz(matriz m) {
     }
 }
 
-matriz multMatriz(matriz x, matriz y) {
-    matriz z = initMatriz();
+matrix multMatrix(matrix x, matrix y) {
+    matrix z = initMatrix();
 
     int i = 0;
     int j = 0;
     int w = 0;
 
-    //printf("%d:%d == %d:%d ?", x.linhas, x.colunas, y.linhas, y.colunas);
+    //printf("%d:%d == %d:%d ?", x.rows, x.columns, y.rows, y.columns);
 
-    if(x.colunas == y.linhas) {
-        getMatriz(x.linhas, y.colunas, &z);
-        for(i = 0; i < x.linhas; i++) {
-            for(j = 0; j < y.colunas; j++) {
-                for(w = 0; w < x.colunas; w++) {
+    if(x.columns == y.rows) {
+        getMatrix(x.rows, y.columns, &z);
+        for(i = 0; i < x.rows; i++) {
+            for(j = 0; j < y.columns; j++) {
+                for(w = 0; w < x.columns; w++) {
                     z.m[i][j] += x.m[i][w] * y.m[w][j];
                     //printf("\nw = %d && z[%d][%d] += %d * %d", w, i, j, x.m[i][w], y.m[w][j]);
                 }

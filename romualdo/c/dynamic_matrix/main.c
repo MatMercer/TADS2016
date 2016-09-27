@@ -5,9 +5,10 @@
 
 int main() {
     srand((unsigned)time(NULL));
-    int max = 5;
-    matrix m1 = initMatrix();
-    matrix m2 = initMatrix();
+    int max = 2;
+    matrix m1 = INIT_MATRIX;
+    matrix m2 = INIT_MATRIX;
+    matrix m3 = INIT_MATRIX;
 
     int i = 0;
 
@@ -29,8 +30,9 @@ int main() {
 
     printMatrix(m2);
     printMatrix(m1);
+    multMatrix(m2, m1, &m3);
 
-    printMatrix(multMatrix(m2, m1));
+    printMatrix(m3);
 
     for(i = 0; i < max; i++) {
         printf("------------------------------------------------------------\n");
@@ -41,11 +43,14 @@ int main() {
         printMatrix(m1);
         printMatrix(m2);
         printf("Sum:\n");
-        printMatrix(sumMatrix(m1, m2));
+        sumMatrix(m1, m2, &m3);
+        printMatrix(m3);
         printf("Subtraction:\n");
-        printMatrix(subMatrix(m1, m2));
+        subMatrix(m1, m2, &m3);
+        printMatrix(m3);
         printf("Multiply:\n");
-        printMatrix(multMatrix(m1, m2));
+        multMatrix(m1, m2, &m3);
+        printMatrix(m3);
     }
     return 0;
 }

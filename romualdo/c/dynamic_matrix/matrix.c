@@ -3,17 +3,9 @@
 #include <time.h>
 #include "matrix.h"
 
-matrix initMatrix() {
-    matrix m;
-
-    m.rows = 0;
-    m.columns = 0;
-    return m;
-}
-
 void getMatrix(int rows, int columns, matrix *m) {
-    if(rows > 0 && columns > 0) {
-        if(m->columns > 0 || m->rows > 0) {
+    if(rows >= 0 && columns >= 0) {
+        if(m->columns > 0 && m->rows > 0) {
             freeMatrix(m);
         }
 
@@ -58,6 +50,7 @@ void printMatrix(matrix m) {
 }
 
 void freeMatrix(matrix *m) {
+    //printf("%d#%d\n", m->m[0][0], m->m[0][1]);
     //printf("Free matrix!\n");
     int i = 0;
     for(i = 0; i < m->rows; i++) {
@@ -93,92 +86,72 @@ void fillRandMatrix(matrix m, int range) {
     }
 }
 
-matrix sumMatrix(matrix x, matrix y) {
-    matrix z = initMatrix();
-
+void sumMatrix(matrix x, matrix y, matrix *z) {
     if(x.rows == y.rows && x.columns == y.columns) {
-        getMatrix(x.rows, x.columns, &z);
+        getMatrix(x.rows, x.columns, z);
 
         int i = 0;
         int j = 0;
 
         for(i = 0; i < x.rows; i++) {
             for(j = 0; j < x.columns; j++) {
-                z.m[i][j] = x.m[i][j] + y.m[i][j];
+                z->m[i][j] = x.m[i][j] + y.m[i][j];
             }
         }
-    }
-
-    return z;
-}
-
-matrix subMatrix(matrix x, matrix y) {
-    matrix z = initMatrix();
-
-    if(x.rows == y.rows && x.columns == y.columns) {
-        getMatrix(x.rows, x.columns, &z);
-
-        int i = 0;
-        int j = 0;
-
-        for(i = 0; i < x.rows; i++) {
-            for(j = 0; j < x.columns; j++) {
-                z.m[i][j] = x.m[i][j] - y.m[i][j];
-            }
-        }
-    }
-
-    return z;
-}
-
-matrix transMatrix(matrix x) {
-    matrix y = initMatrix();
-
-
-    getMatrix(x.columns, x.rows, &y);
-
-    int i = 0;
-    int j = 0;
-
-    for(i = 0; i < y.rows; i++) {
-        for(j = 0; j < y.columns; j++) {
-            y.m[i][j] = x.m[j][i];
-        }
-    }
-
-    return y;
-}
-
-int validMatrix(matrix m) {
-    if(m.rows >= 0 && m.columns >= 0) {
-        return 1;
     }
     else {
-        return 0;
+        getMatrix(0, 0, z);
     }
 }
 
-matrix multMatrix(matrix x, matrix y) {
-    matrix z = initMatrix();
+void subMatrix(matrix x, matrix y, matrix *z) {
+    if(x.rows == y.rows && x.columns == y.columns) {
+        getMatrix(x.rows, x.columns, z);
+
+        int i = 0;
+        int j = 0;
+
+        for(i = 0; i < x.rows; i++) {
+            for(j = 0; j < x.columns; j++) {
+                z->m[i][j] = x.m[i][j] - y.m[i][j];
+            }
+        }
+    }
+    else {
+        getMatrix(0, 0, z);
+    }
+}
+
+void transMatrix(matrix x, matrix *y) {
+    getMatrix(x.columns, x.rows, y);
 
     int i = 0;
     int j = 0;
-    int w = 0;
 
-    //printf("%d:%d == %d:%d ?", x.rows, x.columns, y.rows, y.columns);
+    for(i = 0; i < y->rows; i++) {
+        for(j = 0; j < y->columns; j++) {
+            y->m[i][j] = x.m[j][i];
+        }
+    }
+}
 
+void multMatrix(matrix x, matrix y, matrix *z) {
     if(x.columns == y.rows) {
-        getMatrix(x.rows, y.columns, &z);
+        int i = 0;
+        int j = 0;
+        int w = 0;
+        getMatrix(x.rows, y.columns, z);
         for(i = 0; i < x.rows; i++) {
             for(j = 0; j < y.columns; j++) {
                 for(w = 0; w < x.columns; w++) {
-                    z.m[i][j] += x.m[i][w] * y.m[w][j];
+                    z->m[i][j] += x.m[i][w] * y.m[w][j];
                     //printf("\nw = %d && z[%d][%d] += %d * %d", w, i, j, x.m[i][w], y.m[w][j]);
                 }
                 //printf("\n");
             }
         }
     }
-
-    return z;
+    else {
+        getMatrix(0, 0, z);
+    }
 }

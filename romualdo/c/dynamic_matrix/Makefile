@@ -1,2 +1,2 @@
-matrix: main.c matrix.c matrix.h
-	gcc main.c matrix.c matrix.h -o matrix
+cmatrix: main.c ./matrix/matrix.c ./matrix/matrix.h
+	gcc main.c ./matrix/matrix.c ./matrix/matrix.h -o cmatrix

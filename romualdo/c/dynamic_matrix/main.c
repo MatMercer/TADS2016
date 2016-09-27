@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "matrix.h"
+#include "./matrix/matrix.h"
 
 int main() {
     srand((unsigned)time(NULL));
